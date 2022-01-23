@@ -4,7 +4,7 @@ Install docker in your jenkins server and follow the instructor below the link t
 + Link: https://linuxhint.com/install_jenkins_docker_ubuntu/
 
 
-# Setting Jekins in Doker
+## Setting Jekins in Doker
 + Stop
   + sudo docker stop jenkins-master
   + sudo docker rm jenkins-master
