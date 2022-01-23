@@ -15,3 +15,12 @@ Install docker in your jenkins server and follow the instructor below the link t
 + Start
   + sudo docker run -p 8080:8080 -p 50000:50000 --restart always --name=jenkins-master --mount source=jenkins-log,target=/var/log/jenkins --mount source=jenkins-data,target=/var/jenkins_home -d myjenkins
 
+## Change Dockerfile in Jenkins
+```
+USER root
+...
+RUN apt-get update
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install SQLAlchemy
+RUN pip3 install --upgrade pip
+```
