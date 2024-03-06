@@ -5,12 +5,13 @@
   <artifactId>my-app</artifactId>
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
-  <properties>
-  <maven.compiler.source>11</maven.compiler.source>
-  <maven.compiler.target>11</maven.compiler.target>
-  </properties>
   <name>my-app</name>
   <url>http://maven.apache.org</url>
+  <properties> 
+    <maven.compiler.source>17</maven.compiler.source> 
+    <maven.compiler.target>17</maven.compiler.target>
+    <!-- <sonar.scanner.force-deprecated-java-version>true</sonar.scanner.force-deprecated-java-version> -->
+  </properties>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -25,7 +26,7 @@
         <!-- Build an executable JAR -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
+        <version>3.3.0</version>
         <configuration>
           <archive>
             <manifest>
@@ -41,17 +42,17 @@
   <repositories>
     <repository>
       <id>maven-group</id>
-      <url>https://acit4850-group20.eastus.cloudapp.azure.com/nexus/repository/maven-group/</url>
+      <url>https://apache-prac.eastus2.cloudapp.azure.com/nexus/repository/maven-group/</url>
     </repository>
   </repositories>
   <distributionManagement>
     <snapshotRepository>
       <id>nexus-snapshots</id>
-      <url>https://acit4850-group20.eastus.cloudapp.azure.com/nexus/repository/maven-snapshots/</url>
+      <url>https://apache-prac.eastus2.cloudapp.azure.com/nexus/repository/maven-snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>nexus-releases</id>
-      <url>https://acit4850-group20.eastus.cloudapp.azure.com/nexus/repository/maven-releases/</url>
+      <url>https://apache-prac.eastus2.cloudapp.azure.com/nexus/repository/maven-releases/</url>
     </repository>
   </distributionManagement>
 </project>
