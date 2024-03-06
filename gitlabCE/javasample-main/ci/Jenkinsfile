@@ -13,7 +13,7 @@ pipeline {
         }
         stage("Quality Gate") {
             steps {
-                timeout(time:1, unit: 'HOURS') {
+                timeout(time: 1, unit: 'HOURS') {
                     waitForQualityGate abortPipeline: true
                 }
             }
@@ -22,23 +22,23 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-        post {
-            always {
-                junit 'target/surefire-reports/*.xml'
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
-        stage('Deploy'){
+        stage('Deploy') {
             steps{
-                sh'mvn -B -DskipTests -s settings.xml clean deploy'
+                sh 'mvn -B -DskipTests -s settings.xml clean deploy'
             }
         }
         stage('Package') {
             steps {
                 withCredentials([string(credentialsId: 'DockerHub', variable: 'TOKEN')]) {
-                    sh 'docker login -u "dlatlrrb" -p "$TOKEN" docker.io'
-                    sh "docker build -t myapp:latest --tag dlatlrrb/samplejava:myapp ."
-                    sh "docker push dlatlrrb/samplejava:myapp"
+                    sh 'docker login -u "nightbearwith" -p "$TOKEN" docker.io'
+                    sh "docker build -t myapp:latest --tag nightbearwith/samplejava:myapp ."
+                    sh "docker push nightbearwith/samplejava:myapp"
                 }
             }
         }
@@ -47,7 +47,8 @@ pipeline {
                 expression { params.DEPLOY }
             }
             steps {
-                sh "docker run myapp:latest"
+                sh "chmod +x -R ${env.WORKSPACE}"
+                sh "./ci/scripts/deliver.sh"
             }
         }
     }
