@@ -30,4 +30,25 @@ Install docker in your Jenkins server and follow the instructor below the link (
 
 ## Jenkins Plugin
 + SonarQube Scanner
++ JUnit (if you don't have)
++ Git plugin (if you don't have)
 
+## Add Credentials for Containerization
++ Go to Manage Jenkins
++ Go to Credentials in the Security section
+  + Click global (Domain column)
+  + Click Add Credentials
+    + Kind - Secret text
+    + Secret - Copy and Paste your Access Token from the Docker Hub account 
+
+## Setting URLs from Jenkins
++ Jenkins Location - Go to Manage Jenkins > System > Jenkins Location section
+  + Jenkins URL - your proxy Jenkins VM URL (ex. http://jenkins-practice.westus3.cloudapp.azure.com:8080/jenkins/)
++ SonarQube - Go to Manage Jenkins > System > SonarQube Server section
+  + Click Add SonarQube
+  + Name - SonarQube
+  + Sever URL - your proxy SonarQube VM URL (ex. http://others-practice.eastus.cloudapp.azure.com:9000/sonarqube)
++ Shared Library - Go to Manage Jenkins > System > Retrieval method section
+  + Source Code Management - Git
+  + Project Repository - your shared library repository (ex. https://gitlab-practice.eastus2.cloudapp.azure.com/prototypes/ci_functions.git)
+  + Credentials - Select the Credentials you added, if not Click Add
